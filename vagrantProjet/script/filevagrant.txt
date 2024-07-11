@@ -1,0 +1,41 @@
+  # Configuration du VM pour la DB postgres
+  config.vm.define "database" do |database|
+    database.vm.box = "ubuntu/bionic64"
+    database.vm.network "private_network", ip: "192.168.1.2"
+    database.vm.network "forwarded_port", guest: 5433, host: 5434
+    database.vm.hostname = "postgresql"
+	database.vm.synced_folder ".", "/vagrant_data", create: true
+	# Provisionnement avec le script shell externe
+    database.vm.provision "shell", path: "script/database.sh"
+    end
+	
+	# Configuration de la VM Apache
+  config.vm.define "apache" do |apache|
+    apache.vm.box = "ubuntu/bionic64"
+    apache.vm.hostname = "apache"
+    apache.vm.network "private_network", ip: "192.168.1.3"
+    apache.vm.network "forwarded_port", guest: 80, host: 8081
+    apache.vm.synced_folder ".", "/vagrant_data", create: true
+    apache.vm.provision "shell", path: "script/webserver.sh"
+  end
+  
+    # Configuration de la VM Django
+  config.vm.define "django" do |django|
+    django.vm.box = "ubuntu/bionic64"
+    django.vm.hostname = "django"
+    django.vm.network "private_network", ip: "192.168.1.4"
+    django.vm.network "forwarded_port", guest: 8000, host: 8001
+    django.vm.synced_folder ".", "/vagrant_data", create: true
+    django.vm.provision "shell", path: "script/appserver.sh"
+	end
+	
+		# Serveur d'application
+  config.vm.define "app" do |app|
+    app.vm.box = "ubuntu/bionic64"
+    app.vm.hostname = "springboot"
+    app.vm.network "private_network", ip: "192.168.1.5"
+    app.vm.network "forwarded_port", guest: 8080, host: 8082
+	app.vm.synced_folder ".", "/vagrant_data", create: true
+    app.vm.provision "shell", path: "script/springboot.sh"
+	
+  end
