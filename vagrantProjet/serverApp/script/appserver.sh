@@ -11,8 +11,8 @@ sudo apt install -y ./jdk-17_linux-x64_bin.deb
 sudo apt-get install -y maven
 
 # se positionner dans le dossier de l'application et construire l'application
-#cd /home/vagrant/api
-#./mvnw clean package
+cd /home/vagrant/api
+./mvnw clean package
 
 # execution de l'application Spring Boot
-#nohup java -jar target/*.jar > /dev/null 2>&1 &
+nohup java -jar target/*.jar > /dev/null 2>&1 &
