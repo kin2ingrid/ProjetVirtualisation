@@ -1,0 +1,1 @@
+{"rsync":{"/var/www/html":{"create":true,"type":"rsync","guestpath":"/var/www/html","hostpath":"C:/vagrantProjet/serverWeb/vagrantFront","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}},"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/vagrantProjet/serverWeb","disabled":false,"__vagrantfile":true}}}

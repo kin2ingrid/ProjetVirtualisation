@@ -1,0 +1,16 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  # Configuration du VM pour la base de données PostgreSQL
+  config.vm.define "dbPostgres" do |dbPostgres|
+    dbPostgres.vm.box = "ubuntu/bionic64"
+    dbPostgres.vm.network "private_network", ip: "192.168.1.2"
+    dbPostgres.vm.network "forwarded_port", guest: 5432, host: 5434
+    dbPostgres.vm.hostname = "dbPostgres"
+    dbPostgres.vm.provider "virtualbox" do |vb|
+      vb.memory = "512"
+    end
+    dbPostgres.vm.synced_folder ".", "/vagrant_data", create: true, type: "rsync"
+    dbPostgres.vm.provision "shell", path: "script/database.sh"
+  end
+end

@@ -1,0 +1,1 @@
+{"rsync":{"/home/vagrant/vagrantApi":{"create":true,"type":"rsync","guestpath":"/home/vagrant/vagrantApi","hostpath":"C:/vagrantProjet/serverApp/vagrantApi","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}},"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/vagrantProjet/serverApp","disabled":false,"__vagrantfile":true}}}
