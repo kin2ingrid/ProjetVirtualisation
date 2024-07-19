@@ -37,13 +37,4 @@ public class AuthorService {
 	        return authorRepo.findById(id).orElseThrow(() -> new RuntimeException("Author not found"));
 	    }
 	
-/*
-    public Author findOrCreateAuthorByName(String name) {
-    	 return authorRepo.findByName(name).orElseGet(() -> {
-             Author newAuthor = new Author();
-             newAuthor.setNom(name);
-             return authorRepo.enregistrerAuteur(newAuthor);
-         });
-    }*/
-
 }
