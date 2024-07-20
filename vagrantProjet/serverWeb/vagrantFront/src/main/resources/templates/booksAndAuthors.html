@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template1">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des livres avec leur auteurs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <h1 class="text-center my-4">Liste des Livres et leurs Auteurs</h1>
+        <table class="table table-striped table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Titre</th>
+                    <th>ISBN</th>
+                    <th>Auteur</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="book : ${listBooks}">
+                    <td th:text="${book.titre}"></td>
+                    <td th:text="${book.isbn}"></td>
+                    <td>
+                        <span th:if="${book.author != null}" th:text="${book.author.nom} + ' ' + ${book.author.prenom}"></span>
+                        <span th:if="${book.author == null}">Unknown Author</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
