@@ -1,4 +1,4 @@
-#remarque: tomcat est embarqué(integré dans Sprint Boot) donc pas necessaire de l'installer encore
+#remarque: tomcat est embarqué(integré dans Spring Boot) donc pas necessaire de l'installer encore
 # Mis à jour des paquets
 sudo apt-get update
 

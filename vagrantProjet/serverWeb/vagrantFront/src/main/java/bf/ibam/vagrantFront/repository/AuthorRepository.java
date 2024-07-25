@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Repository
 public class AuthorRepository {
-	public final String ApiUrl = "http://localhost:8082/apiAuteur"; //chemin de l'api a atteindre
+	public final String ApiUrl = "http://192.168.1.3:8082/apiAuteur"; //chemin de l'api a atteindre
 	private RestTemplate rest =new RestTemplate();//permet la communication avec l'appi
 
 	  public List<Author> getAllAuthor() {
