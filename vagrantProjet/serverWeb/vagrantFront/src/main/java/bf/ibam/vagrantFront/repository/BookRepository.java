@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Repository
 public class BookRepository {
-public final String ApiUrl = "http://localhost:8082/apiBook"; //chemin de l'api a atteindre
+public final String ApiUrl = "http://192.168.1.3:8082/apiBook"; //chemin de l'api a atteindre
 
 private final RestTemplate rest = new RestTemplate();	//permet la communication avec l'appi
 

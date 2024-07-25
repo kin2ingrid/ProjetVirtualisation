@@ -1,0 +1,11 @@
+bf\ibam\vagrantFront\model\Book.class
+bf\ibam\vagrantFront\service\AuthorService.class
+bf\ibam\vagrantFront\repository\AuthorRepository$1.class
+bf\ibam\vagrantFront\model\Author.class
+bf\ibam\vagrantFront\controller\BookController.class
+bf\ibam\vagrantFront\VagrantFrontApplication.class
+bf\ibam\vagrantFront\repository\BookRepository$1.class
+bf\ibam\vagrantFront\repository\AuthorRepository.class
+bf\ibam\vagrantFront\service\BookServive.class
+bf\ibam\vagrantFront\repository\BookRepository.class
+bf\ibam\vagrantFront\controller\AuthorController.class
