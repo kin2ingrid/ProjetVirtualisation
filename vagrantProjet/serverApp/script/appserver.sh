@@ -12,11 +12,13 @@ dos2unix /home/vagrant/vagrantApi/mvnw
 
 # Installation de Maven
 sudo apt-get install -y maven
+#donner les drots d'execution 
+sudo chmod +x /home/vagrant/vagrantApi/target/vagrantApi-0.0.1-SNAPSHOT.jar
 
 # se positionner dans le dossier de l'application et construire l'application
 cd /home/vagrant/vagrantApi
  ./mvnw clean install
 
- # Déploie l'application 
- ./mvnw spring-boot:run &
+ # demarrage de  l'application
+nohup java -jar /home/vagrant/vagrantApi/target/vagrantApi-0.0.1-SNAPSHOT.jar > /home/vagrant/vagrantApi/app.log 2>&1 &
 
