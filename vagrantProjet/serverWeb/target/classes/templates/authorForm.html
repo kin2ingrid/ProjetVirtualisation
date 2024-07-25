@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">-->
+</head>
+<body>
+<div layout:fragment="content">
+<h1>Nouveau Auteur</h1>
+<form th:action="@{/saveAuthor}" th:object="${author}" method="post" class="mb-4">
+    <input type="hidden" th:field="*{id}" />
+    <div class="form-group">
+        <label for="uri">Code Auteur:</label>
+        <input type="text" id="code" th:field="*{code}" required  class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="name">Nom:</label>
+        <input type="text" id="nom" th:field="*{nom}" required class="form-control"/>
+    </div>
+	<div class="form-group">
+	       <label for="name">Prenom:</label>
+	       <input type="text" id="prenom" th:field="*{prenom}" required class="form-control"/>
+	   </div>
+    <div class="form-group">
+        <label for="nationalite">Nationalité:</label>
+        <input type="text" id="nationalite" th:field="*{nationalite}" required />
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+</form>
+</div>
+
+</body>
+</html>

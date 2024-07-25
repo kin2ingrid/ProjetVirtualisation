@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">-->
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" th:href="@{/}">Acceuil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{auteurs}">Auteur</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{livre}">Livres</a>
+        </li>
+    </ul>
+</nav>
+<section layout:fragment="content"></section>
+
+</body>
+
+</html>
