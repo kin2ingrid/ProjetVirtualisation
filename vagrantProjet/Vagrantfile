@@ -1,0 +1,46 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  # Configuration de la VM pour la base de données PostgreSQL
+  config.vm.define "dbPostgres" do |dbPostgres|
+    dbPostgres.vm.box = "ubuntu/bionic64"
+    dbPostgres.vm.network "private_network", ip: "192.168.1.2"
+    dbPostgres.vm.network "forwarded_port", guest: 5432, host: 5434
+    dbPostgres.vm.hostname = "dbPostgres"
+    dbPostgres.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+    end
+    # Augmentez le délai d'attente pour les connexions SSH
+    dbPostgres.vm.boot_timeout = 600
+    dbPostgres.vm.synced_folder ".", "/vagrant_data", create: true, type: "rsync"
+    dbPostgres.vm.provision "shell", path: "script/database.sh"
+  end
+  
+  # Configuration de la VM pour le serverWeb
+  config.vm.define "serverWeb" do |serverWeb|
+    serverWeb.vm.box = "ubuntu/bionic64"
+    serverWeb.vm.network "private_network", ip: "192.168.1.4"
+    serverWeb.vm.network "forwarded_port", guest: 8085, host: 8084
+    serverWeb.vm.hostname = "serverWeb"
+    serverWeb.vm.provider "virtualbox" do |vb|
+      vb.memory = "512"
+    end
+    serverWeb.vm.boot_timeout = 600
+    serverWeb.vm.synced_folder "C:/ProjetVirtualisation/vagrantProjet/serverWeb/vagrantFront/target", "/vagrant/target", create: true, type: "rsync"
+    serverWeb.vm.provision "shell", path: "script/webserver.sh"
+  end
+  
+  # Configuration de la VM pour le serveur d'application
+  config.vm.define "serverApp" do |serverApp|
+    serverApp.vm.box = "ubuntu/bionic64"
+    serverApp.vm.network "private_network", ip: "192.168.1.3"
+    serverApp.vm.network "forwarded_port", guest: 8082, host: 9090
+    serverApp.vm.hostname = "serverApp"
+    serverApp.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+    end
+    serverApp.vm.boot_timeout = 600
+    serverApp.vm.synced_folder "C:/ProjetVirtualisation/vagrantProjet/serverApp/vagrantApi", "/home/vagrant/vagrantApi", create: true, type: "rsync"
+    serverApp.vm.provision "shell", path: "script/appserver.sh"
+  end
+end
