@@ -13,7 +13,7 @@ sudo a2enmod rewrite
 
 # Créer un fichier de configuration pour l'application
 cat <<EOL | sudo tee /etc/apache2/sites-available/myapp2.conf
-<VirtualHost *:84>
+<VirtualHost *:8085>
     ServerAdmin webmaster@localhost
     ServerName 192.168.1.4
     DocumentRoot /var/www/html
